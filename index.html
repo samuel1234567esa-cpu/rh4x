@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥 RH4X V2+ | SAMUELDOSSCRIPT__</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0f1c;font-family:'Inter',sans-serif;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+.container{max-width:950px;width:100%}
+.card{background:rgba(12,18,28,.95);border-radius:24px;border:1px solid rgba(0,255,255,.3);padding:40px;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+.header{text-align:center;margin-bottom:30px}
+.header h1{font-size:2.5rem;background:linear-gradient(135deg,#0ff,#f0f,#ffaa44);-webkit-background-clip:text;background-clip:text;color:transparent}
+.header p{color:#8dd0ff;margin-top:5px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.box{background:#0d1520;border-radius:16px;padding:25px;border:1px solid #1a2a3a}
+.box h3{color:#0ff;margin-bottom:15px;font-size:1.1rem}
+.input-group{display:flex;gap:10px;margin-bottom:15px;flex-wrap:wrap}
+.input-group select{flex:1;padding:12px 16px;border-radius:10px;border:1px solid #1e2f3f;background:#0a121e;color:#fff;font-size:14px;min-width:120px}
+.btn{padding:12px 28px;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;transition:all .3s;text-transform:uppercase}
+.btn-primary{background:linear-gradient(135deg,#00d4ff,#0088cc);color:#fff}
+.btn-success{background:linear-gradient(135deg,#00cc66,#008844);color:#fff}
+.btn-danger{background:linear-gradient(135deg,#ff4444,#cc0000);color:#fff}
+.btn-warning{background:linear-gradient(135deg,#ffaa00,#cc8800);color:#fff}
+.btn-purple{background:linear-gradient(135deg,#8844ff,#6600cc);color:#fff}
+.btn-pink{background:linear-gradient(135deg,#ff4488,#cc0044);color:#fff}
+.btn-sm{padding:8px 16px;font-size:12px}
+.key-display{background:#010a14;padding:20px;border-radius:10px;font-family:'Courier New',monospace;color:#0ff;font-size:1.3rem;text-align:center;margin:10px 0;border:2px solid #0ff3;word-break:break-all}
+.key-display .plan-badge{display:inline-block;background:#0ff2;padding:4px 12px;border-radius:20px;font-size:.7rem;color:#0ff;margin-left:10px}
+#keyInfo{background:#010a14;padding:12px;border-radius:10px;border:1px solid #1a2a3a;margin-top:10px;font-size:.85rem;color:#c8e8ff;line-height:1.7}
+.code-block{background:#010a14;padding:20px;border-radius:10px;max-height:500px;overflow-y:auto;font-family:'Courier New',monospace;font-size:11px;color:#88ddff;border:1px solid #1a2a3a;white-space:pre-wrap;word-break:break-all;line-height:1.6}
+.badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:600}
+.badge-active{background:#00cc66;color:#fff}
+.toast{position:fixed;bottom:30px;right:30px;padding:15px 30px;border-radius:12px;color:#fff;font-weight:600;display:none;z-index:999;max-width:400px}
+.toast.success{background:#00cc66}
+.toast.error{background:#ff4444}
+.toast.info{background:#0088cc}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:25px}
+.stat-item{background:#0d1520;padding:15px;border-radius:10px;text-align:center;border:1px solid #1a2a3a}
+.stat-item .num{font-size:2rem;font-weight:800;color:#0ff}
+.stat-item .label{font-size:.7rem;color:#8b949e;text-transform:uppercase}
+.key-list{max-height:350px;overflow-y:auto}
+.key-item{display:flex;justify-content:space-between;align-items:center;padding:10px 15px;background:#0a121e;border-radius:8px;margin-bottom:6px;border-left:3px solid #0ff;flex-wrap:wrap;gap:10px}
+.key-item .code{font-family:'Courier New',monospace;color:#0ff;font-size:.9rem;font-weight:600}
+.key-item .info{font-size:.7rem;color:#8b949e}
+.key-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.key-actions button{padding:4px 12px;border:none;border-radius:6px;font-size:.7rem;cursor:pointer;font-weight:600}
+.btn-copy{background:#0ff;color:#000}
+.btn-delete{background:#ff4444;color:#fff}
+.btn-use{background:#00cc66;color:#fff}
+.btn-script{background:#8844ff;color:#fff}
+.btn-group{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.tab-bar{display:flex;gap:5px;margin-bottom:20px;border-bottom:1px solid #1a2a3a;padding-bottom:10px;flex-wrap:wrap}
+.tab-btn{padding:10px 24px;border:none;background:transparent;color:#8b949e;font-weight:600;cursor:pointer;border-radius:8px;font-size:.9rem}
+.tab-btn.active{background:#0ff2;color:#0ff}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.info-box{background:#0ff1;padding:15px;border-radius:10px;border-left:4px solid #0ff;margin-top:15px;color:#88ddff;font-size:.85rem}
+.color-row{display:flex;align-items:center;gap:15px;margin:10px 0;flex-wrap:wrap}
+.color-row label{color:#8b949e;font-size:.9rem;min-width:120px}
+.color-row input[type="color"]{width:50px;height:40px;border:none;border-radius:8px;background:#0a121e;cursor:pointer}
+.color-row input[type="text"]{flex:1;padding:8px 12px;border-radius:8px;border:1px solid #1a2a3a;background:#0a121e;color:#fff;font-size:14px;min-width:100px}
+@media (max-width:768px){.grid-2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.card{padding:20px}.header h1{font-size:1.8rem}.key-display{font-size:1rem}}
+.status-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.dot-active{background:#00cc66}
+.dot-used{background:#ff4444}
+.dot-expired{background:#ffaa00}
+.loading{text-align:center;color:#0ff;padding:20px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<div class="header">
+<h1>⚡ RH4X V2+ | SAMUELDOSSCRIPT__</h1>
+<p>🔐 Gerador de keys – conectado ao servidor</p>
+</div>
+<div class="stats">
+<div class="stat-item"><div class="num" id="totalKeys">0</div><div class="label">Total</div></div>
+<div class="stat-item"><div class="num" id="activeKeys">0</div><div class="label">Ativas</div></div>
+<div class="stat-item"><div class="num" id="usedKeys">0</div><div class="label">Usadas</div></div>
+<div class="stat-item"><div class="num" id="expiredKeys">0</div><div class="label">Expiradas</div></div>
+</div>
+<div class="tab-bar">
+<button class="tab-btn active" onclick="openTab('generator', this)">🔑 Gerar Key</button>
+<button class="tab-btn" onclick="openTab('script', this)">📜 SAMUELDOSSCRIPT__</button>
+<button class="tab-btn" onclick="openTab('list', this)">📋 Minhas Keys</button>
+</div>
+<div class="tab-content active" id="tab-generator">
+<div class="grid-2">
+<div class="box">
+<h3>🔑 Gerar Nova Key</h3>
+<div class="input-group">
+<select id="planSelect">
+<option value="2">⏱️ 2 horas - R$2</option>
+<option value="6">⏱️ 6 horas - R$5</option>
+<option value="12">⏱️ 12 horas - R$7</option>
+<option value="24" selected>🔥 24 horas - R$10</option>
+<option value="72">📦 72 horas - R$15</option>
+<option value="168">⭐ 168 horas - R$20</option>
+<option value="720">👑 720 horas - R$30</option>
+</select>
+<button class="btn btn-success" onclick="generateKey()">GERAR</button>
+</div>
+<div id="newKeyDisplay" class="key-display">🔑 Clique em GERAR</div>
+<div id="keyInfo"></div>
+<div class="btn-group">
+<button class="btn btn-primary" onclick="copyKey()">📋 Copiar Key</button>
+<button class="btn btn-purple" onclick="generateScript()">📜 Gerar Script</button>
+<button class="btn btn-pink" onclick="copyScript()">📋 Copiar Script</button>
+</div>
+<div id="scriptReady" style="display:none;margin-top:10px"><span style="color:#0ff">✅ Script gerado!</span></div>
+</div>
+<div class="box">
+<h3>🎨 Personalizações</h3>
+<div class="color-row"><label>Cor do ESP:</label><input type="color" id="espColor" value="#00d2ff"><input type="text" id="espColorHex" value="#00d2ff" maxlength="7"></div>
+<div class="color-row"><label>Cor do Painel:</label><input type="color" id="panelColor" value="#121623"><input type="text" id="panelColorHex" value="#121623" maxlength="7"></div>
+<div class="color-row"><label>Mensagem Spam:</label><input type="text" id="spamMessage" value="RH4X V2 🔥" style="flex:1;padding:8px 12px;border-radius:8px;border:1px solid #1a2a3a;background:#0a121e;color:#fff;font-size:14px"></div>
+<div class="info-box">⚠️ <strong>Aviso oculto:</strong> "NÃO REMOVA KEY DO SCRIPT PAGO NÃO ENTREGUE A KEY A NINGUEM COU TE BANIR DA MINHA LOJA SE FAZER ISSO"</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="tab-script">
+<div class="box">
+<h3>📜 Script RH4X V2+</h3>
+<div class="input-group">
+<select id="scriptKeySelect" style="flex:1"><option value="">Selecione uma key...</option></select>
+<button class="btn btn-purple" onclick="generateScriptFromSelect()">GERAR SCRIPT</button>
+</div>
+<div id="scriptOutput" class="code-block" style="margin-top:15px">Selecione uma key e clique em GERAR SCRIPT</div>
+<button class="btn btn-primary" onclick="copyScriptOutput()" style="margin-top:10px">📋 Copiar Script</button>
+</div>
+</div>
+<div class="tab-content" id="tab-list">
+<div class="box">
+<h3>📋 Suas Keys (servidor)</h3>
+<div style="display:flex;gap:10px;margin-bottom:15px;flex-wrap:wrap">
+<button class="btn btn-warning btn-sm" onclick="loadKeys()">🔄 Recarregar</button>
+<button class="btn btn-danger btn-sm" onclick="clearAllKeys()">🗑️ Limpar Tudo</button>
+<button class="btn btn-warning btn-sm" onclick="exportKeys()">📤 Exportar</button>
+</div>
+<div class="key-list" id="keyList"><p class="loading">🔄 Carregando...</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+  const API_URL='https://rh4x.onrender.com';
+const ADMIN_TOKEN='rh4x_samuel_2024_xk92mP';
+let keys={},currentKey=null,currentScript=null;
+async function api(path,options={}){
+  const res=await fetch(API_URL+path,{...options,headers:{'Content-Type':'application/json','x-admin-token':ADMIN_TOKEN,...(options.headers||{})}});
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  return res.json();
+}
+async function loadKeys(){
+  const list=document.getElementById('keyList');
+  if(list)list.innerHTML='<p class="loading">🔄 Carregando...</p>';
+  try{
+    const rows=await api('/api/keys');
+    keys={};
+    for(const r of rows){keys[r.key]={created:new Date(r.created*1000).toISOString(),expires:new Date(r.expires*1000).toISOString(),used:!!r.used,hours:r.hours,plan:r.plan};}
+    updateUI();
+  }catch(e){console.error(e);if(list)list.innerHTML='<p style="color:#ff4444">❌ Erro: '+e.message+'</p>';}
+}
+function getESPColor(){const h=document.getElementById('espColorHex').value;return{r:parseInt(h.slice(1,3),16)||0,g:parseInt(h.slice(3,5),16)||0,b:parseInt(h.slice(5,7),16)||0};}
+function getPanelColor(){const h=document.getElementById('panelColorHex').value;return{r:parseInt(h.slice(1,3),16)||0,g:parseInt(h.slice(3,5),16)||0,b:parseInt(h.slice(5,7),16)||0};}
+function getSpam(){return document.getElementById('spamMessage').value||"RH4X V2 🔥";}
+async function generateKey(){
+  const plan=document.getElementById('planSelect').value;
+  const hours=parseInt(plan);
+  const names={'2':'⏱️ 2h','6':'⏱️ 6h','12':'⏱️ 12h','24':'🔥 1d','72':'📦 3d','168':'⭐ 7d','720':'👑 30d'};
+  const d=document.getElementById('newKeyDisplay');
+  d.innerHTML='⏳ Gerando...';
+  try{
+    const data=await api('/api/keys',{method:'POST',body:JSON.stringify({hours,plan:names[plan]||'Plano'})});
+    currentKey=data.key;
+    d.innerHTML=`🔑 ${data.key} <span class="plan-badge">${names[plan]}</span>`;
+    document.getElementById('keyInfo').innerHTML=`<div style="color:#0ff">✅ Key gerada no SERVIDOR!</div><div>📅 Plano: <strong style="color:#fff">${names[plan]}</strong></div><div>⏰ Horas: <strong style="color:#fff">${hours}</strong></div><div>📆 Expira em: <strong style="color:#fff">${new Date(data.expires*1000).toLocaleString()}</strong></div><div>🔒 Status: <span class="badge badge-active">ATIVA</span></div>`;
+    document.getElementById('scriptReady').style.display='none';
+    currentScript=null;
+    showToast('✅ Key gerada!','success');
+    await loadKeys();
+  }catch(e){d.innerHTML='❌ Erro';showToast('❌ '+e.message,'error');}
+}
+function obfuscateKey(key){
+  if(!key||!keys[key])return'return ""';
+  const parts=key.split('-');
+  let r='local __d=nil\nreturn function()\n if __d then return __d end\n local k=""\n local c={';
+  for(let i=0;i<parts.length;i++){
+    r+='{';
+    for(let j=0;j<parts[i].length;j++)r+=parts[i].charCodeAt(j)+(j<parts[i].length-1?',':'');
+    r+='}'+(i<parts.length-1?',':'');
+  }
+  r+='}\n for i,ch in ipairs(c) do\n  if i>1 then k=k.."-" end\n  for _,b in ipairs(ch) do k=k..string.char(b) end\n end\n __d=k\n return k\nend';
+  return r;
+}
+function generateScriptFromSelect(){
+  const k=document.getElementById('scriptKeySelect').value;
+  if(!k){showToast('⚠️ Selecione uma key!','error');return;}
+  if(!keys[k]){showToast('⚠️ Key não encontrada!','error');return;}
+  generateScriptWithKey(k);
+}
+function generateScript(){
+  if(!currentKey){showToast('⚠️ Gere uma key primeiro!','error');return;}
+  generateScriptWithKey(currentKey);
+}
+function generateScriptWithKey(key){
+  if(!keys[key]){showToast('⚠️ Key inválida!','error');return;}
+  currentKey=key;
+  const e=getESPColor(),p=getPanelColor(),spam=getSpam(),apiUrl=API_URL;
+  const obf=obfuscateKey(key);
+  const LUA=buildLuaScript(key,obf,e,p,spam,apiUrl);
+  currentScript=LUA;
+  document.getElementById('scriptOutput').textContent=LUA;
+  document.getElementById('scriptReady').style.display='block';
+  showToast('✅ Script gerado!','success');
+}
+function buildLuaScript(key,obf,e,p,spam,apiUrl){
+  return '--[[ RH4X V2+ | SAMUELDOSSCRIPT__ KEY: '+key+' ]]\n\nlocal API_URL="'+apiUrl+'"\nlocal _getKey=(function()\n'+obf+'\nend)()\nlocal USER_KEY=_getKey()\nlocal HttpService=game:GetService("HttpService")\nlocal function httpPost(url,body)\n local h={["Content-Type"]="application/json"}\n local ok,r=pcall(function()\n  if syn and syn.request then return syn.request({Url=url,Method="POST",Headers=h,Body=body}).Body\n  elseif http_request then return http_request({Url=url,Method="POST",Headers=h,Body=body}).Body\n  elseif request then return request({Url=url,Method="POST",Headers=h,Body=body}).Body\n  else return game:HttpGetAsync(url,true,h,"POST",body) end\n end)\n return ok and r or nil\nend\nlocal function getHWID() local ok,id=pcall(function() return tostring(game:GetService("RbxAnalyticsService"):GetClientId()) end) return (ok and id) or ("unk_"..tostring(math.random(100000,999999))) end\nlocal _body=HttpService:JSONEncode({key=USER_KEY,hwid=getHWID()})\nlocal _resp=httpPost(API_URL.."/api/validate",_body)\nif not _resp then pcall(function() game:GetService("StarterGui"):SetCore("SendNotification",{Title="RH4X",Text="❌ Sem conexão com o servidor",Duration=6}) end) return end\nlocal _ok,_data=pcall(function() return HttpService:JSONDecode(_resp) end)\nif not _ok or not _data or not _data.valid then pcall(function() game:GetService("StarterGui"):SetCore("SendNotification",{Title="RH4X",Text=(_data and _data.message) or "❌ Key inválida",Duration=6}) end) return end\npcall(function() game:GetService("StarterGui"):SetCore("SendNotification",{Title="RH4X",Text=_data.message or "✅ Autenticado",Duration=5}) end)\n\nlocal Players=game:GetService("Players")\nlocal RunService=game:GetService("RunService")\nlocal UserInputService=game:GetService("UserInputService")\nlocal CoreGui=game:GetService("CoreGui")\nlocal VirtualUser=game:GetService("VirtualUser")\nlocal ReplicatedStorage=game:GetService("ReplicatedStorage")\nlocal TextChatService=game:FindFirstChild("TextChatService")\nlocal Camera=workspace.CurrentCamera\nlocal LocalPlayer=Players.LocalPlayer\nlocal LOGO_URL="https://i.imgur.com/uUKTiYv.png"\nlocal ESP_COLOR=Color3.fromRGB('+e.r+','+e.g+','+e.b+')\nlocal PANEL_BG_COLOR=Color3.fromRGB('+p.r+','+p.g+','+p.b+')\nlocal CHAT_SPAM_MESSAGE="'+spam+'"\n\nlocal Settings={espEnabled=true,espBox=true,espLine=true,espHealth=true,espName=true,espDistance=true,espTracer=true,espSkeleton=false,espChams=false,espGlow=false,espRainbow=false,espColor=ESP_COLOR,aimbotEnabled=false,aimbotPredict=false,aimbotSmooth=5,aimbotFOV=90,aimbotHitbox="Head",flyEnabled=false,flySpeed=50,noClipEnabled=false,jumpPower=60,swimSpeed=50,antiAFK=false,autoJump=false,teleportAll=false,explodeAll=false,freezeAll=false,chatSpam=false}\nlocal Logged=true\nlocal ESPObjects={}\nlocal MenuVisible=false\nlocal fovCircle=nil\nlocal menuFrame=nil\nlocal floatBtn=nil\nlocal MainGui=nil\nlocal currentHue=0\nlocal Connections={fly=nil,noClip=nil,freezeAll=nil,chatSpam=nil,antiAFK=nil,autoJump=nil}\nlocal function safeCall(fn,...) local ok,err=pcall(fn,...) if not ok then warn("[RH4X] "..tostring(err)) end end\nlocal function getChar(pl) pl=pl or LocalPlayer return pl.Character end\nlocal function getRoot(pl) local c=getChar(pl) return c and c:FindFirstChild("HumanoidRootPart") end\nlocal function getHum(pl) local c=getChar(pl) return c and c:FindFirstChildOfClass("Humanoid") end\nlocal function isAlive(pl) local h=getHum(pl) return h and h.Health>0 end\n\nlocal function createESPObjects()\n local o={}\n o.box=Drawing.new("Square") o.box.Visible=false\n o.line=Drawing.new("Line") o.line.Visible=false\n o.name=Drawing.new("Text") o.name.Center=true o.name.Outline=true o.name.Visible=false\n o.dist=Drawing.new("Text") o.dist.Center=true o.dist.Outline=true o.dist.Visible=false\n o.healthT=Drawing.new("Text") o.healthT.Center=true o.healthT.Outline=true o.healthT.Visible=false\n o.tracer=Drawing.new("Line") o.tracer.Visible=false\n o.healthBg=Drawing.new("Square") o.healthBg.Visible=false\n o.healthFg=Drawing.new("Square") o.healthFg.Visible=false\n o.skeleton={} o.highlight=nil o.glow=nil\n return o\nend\n\nlocal function hideAllESP(o) o.box.Visible=false o.line.Visible=false o.name.Visible=false o.dist.Visible=false o.healthT.Visible=false o.tracer.Visible=false o.healthBg.Visible=false o.healthFg.Visible=false for _,l in ipairs(o.skeleton) do l.Visible=false end end\nlocal function clearSkeleton(o) for _,l in ipairs(o.skeleton) do safeCall(function() l:Remove() end) end o.skeleton={} end\n\nlocal function updateESP()\n for player,o in pairs(ESPObjects) do\n  if not Settings.espEnabled or player==LocalPlayer or not isAlive(player) then\n   hideAllESP(o) clearSkeleton(o)\n   if o.highlight then o.highlight.Enabled=false end\n   if o.glow then o.glow.Visible=false end\n  else\n   local char=player.Character\n   local root=char and char:FindFirstChild("HumanoidRootPart")\n   local head=char and char:FindFirstChild("Head")\n   local hum=char and char:FindFirstChildOfClass("Humanoid")\n   if not(root and head and hum) then hideAllESP(o) clearSkeleton(o)\n   else\n    local headPos,onScreen=Camera:WorldToViewportPoint(head.Position)\n    local rootPos=Camera:WorldToViewportPoint(root.Position)\n    if not onScreen then hideAllESP(o) clearSkeleton(o)\n    else\n     local height=math.abs((rootPos.Y-headPos.Y)*1.5)\n     local width=height*0.6\n     local topLeft=Vector2.new(headPos.X-width/2,headPos.Y-height)\n     local color=Settings.espRainbow and Color3.fromHSV(currentHue,1,1) or Settings.espColor\n     if Settings.espBox then o.box.Position=topLeft o.box.Size=Vector2.new(width,height) o.box.Color=color o.box.Thickness=1.5 o.box.Filled=false o.box.Visible=true else o.box.Visible=false end\n     if Settings.espLine then o.line.From=Vector2.new(headPos.X,headPos.Y) o.line.To=Vector2.new(headPos.X,headPos.Y+height) o.line.Color=color o.line.Thickness=1 o.line.Visible=true else o.line.Visible=false end\n     if Settings.espName then o.name.Position=Vector2.new(headPos.X,headPos.Y-16) o.name.Text=player.Name o.name.Color=Color3.fromRGB(255,255,255) o.name.Size=14 o.name.Visible=true else o.name.Visible=false end\n     if Settings.espDistance then local myRoot=getRoot() local dist=myRoot and (root.Position-myRoot.Position).Magnitude or 0 o.dist.Position=Vector2.new(headPos.X,headPos.Y+height+4) o.dist.Text=string.format("%.0fm",dist) o.dist.Color=Color3.fromRGB(200,230,255) o.dist.Size=12 o.dist.Visible=true else o.dist.Visible=false end\n     if Settings.espHealth and hum then local hp=math.clamp(hum.Health/math.max(hum.MaxHealth,1),0,1) local barH=height local barW=3 local barX=topLeft.X-6 o.healthBg.Position=Vector2.new(barX,topLeft.Y) o.healthBg.Size=Vector2.new(barW,barH) o.healthBg.Color=Color3.fromRGB(30,30,30) o.healthBg.Filled=true o.healthBg.Visible=true o.healthFg.Position=Vector2.new(barX,topLeft.Y+barH*(1-hp)) o.healthFg.Size=Vector2.new(barW,barH*hp) o.healthFg.Color=Color3.fromRGB(255*(1-hp),255*hp,0) o.healthFg.Filled=true o.healthFg.Visible=true o.healthT.Position=Vector2.new(headPos.X,topLeft.Y-32) o.healthT.Text=string.format("%d HP",math.floor(hum.Health)) o.healthT.Color=Color3.fromRGB(255,255,255) o.healthT.Size=11 o.healthT.Visible=true else o.healthBg.Visible=false o.healthFg.Visible=false o.healthT.Visible=false end\n     if Settings.espTracer then o.tracer.From=Vector2.new(Camera.ViewportSize.X/2,Camera.ViewportSize.Y) o.tracer.To=Vector2.new(headPos.X,headPos.Y+height/2) o.tracer.Color=color o.tracer.Thickness=1 o.tracer.Visible=true else o.tracer.Visible=false end\n     if Settings.espSkeleton then\n      clearSkeleton(o)\n      local prs={{"Head","UpperTorso"},{"UpperTorso","LowerTorso"},{"UpperTorso","LeftUpperArm"},{"LeftUpperArm","LeftLowerArm"},{"UpperTorso","RightUpperArm"},{"RightUpperArm","RightLowerArm"},{"LowerTorso","LeftUpperLeg"},{"LeftUpperLeg","LeftLowerLeg"},{"LowerTorso","RightUpperLeg"},{"RightUpperLeg","RightLowerLeg"}}\n      for _,pr in ipairs(prs) do\n       local p1=char:FindFirstChild(pr[1])\n       local p2=char:FindFirstChild(pr[2])\n       if p1 and p2 then\n        local v1,on1=Camera:WorldToViewportPoint(p1.Position)\n        local v2,on2=Camera:WorldToViewportPoint(p2.Position)\n        if on1 and on2 then local line=Drawing.new("Line") line.From=Vector2.new(v1.X,v1.Y) line.To=Vector2.new(v2.X,v2.Y) line.Color=Color3.fromRGB(255,80,80) line.Thickness=1.5 line.Visible=true table.insert(o.skeleton,line) end\n       end\n      end\n     end\n     if Settings.espChams then\n      if not o.highlight or not o.highlight.Parent then safeCall(function() local hl=Instance.new("Highlight") hl.Parent=char hl.FillColor=color hl.FillTransparency=0.5 hl.OutlineColor=color hl.OutlineTransparency=0 o.highlight=hl end) else o.highlight.FillColor=color o.highlight.OutlineColor=color o.highlight.Enabled=true end\n     elseif o.highlight then o.highlight.Enabled=false end\n     if Settings.espGlow then\n      if not o.glow or not o.glow.Parent then safeCall(function() local sb=Instance.new("SelectionBox") sb.Adornee=char sb.Color3=color sb.LineThickness=0.05 sb.Transparency=0.6 sb.Parent=char o.glow=sb end) else o.glow.Color3=color o.glow.Visible=true end\n     elseif o.glow then o.glow.Visible=false end\n    end\n   end\n  end\n end\nend\n\nlocal function getPredictedPosition(player)\n local char=player.Character\n if not char then return nil end\n local root=char:FindFirstChild("HumanoidRootPart")\n if not root then return nil end\n local pos=root.Position\n if Settings.aimbotHitbox=="Head" then local head=char:FindFirstChild("Head") if head then pos=head.Position end\n elseif Settings.aimbotHitbox=="Chest" then pos=pos+Vector3.new(0,1,0)\n else pos=pos-Vector3.new(0,1,0) end\n if Settings.aimbotPredict then pos=pos+root.Velocity*0.15 end\n return pos\nend\n\nlocal function getBestAimTarget()\n local camPos=Camera.CFrame.Position\n local camDir=Camera.CFrame.LookVector\n local bestAngle=Settings.aimbotFOV\n local bestPos=nil\n for _,pl in ipairs(Players:GetPlayers()) do\n  if pl~=LocalPlayer and isAlive(pl) then\n   local pos=getPredictedPosition(pl)\n   if pos then\n    local dir=pos-camPos\n    if dir.Magnitude>0.1 then dir=dir.Unit local angle=math.deg(math.acos(math.clamp(camDir:Dot(dir),-1,1))) if angle<bestAngle then bestAngle=angle bestPos=pos end end\n   end\n  end\n end\n return bestPos\nend\n\nlocal function createFOVCircle()\n if fovCircle then safeCall(function() fovCircle:Remove() end) end\n fovCircle=Drawing.new("Circle") fovCircle.Visible=false fovCircle.Color=Color3.fromRGB(0,255,200) fovCircle.Thickness=1.5 fovCircle.Filled=false fovCircle.NumSides=64\nend\nlocal function updateFOVCircle()\n if not fovCircle then createFOVCircle() end\n safeCall(function() fovCircle.Visible=Settings.aimbotEnabled and Settings.aimbotFOV>0 if fovCircle.Visible then local center=Camera.ViewportSize/2 fovCircle.Position=Vector2.new(center.X,center.Y) local maxR=math.min(Camera.ViewportSize.X,Camera.ViewportSize.Y)/2 fovCircle.Radius=maxR*(Settings.aimbotFOV/180) end end)\nend\n\nlocal function toggleFly(state)\n if Connections.fly then Connections.fly:Disconnect() Connections.fly=nil end\n if state then Connections.fly=RunService.RenderStepped:Connect(function() safeCall(function() local char=LocalPlayer.Character if not char then return end local root=char:FindFirstChild("HumanoidRootPart") local hum=char:FindFirstChildOfClass("Humanoid") if not(root and hum) then return end hum.PlatformStand=true local mv=Vector3.new() if UserInputService:IsKeyDown(Enum.KeyCode.W) then mv=mv+Camera.CFrame.LookVector*Vector3.new(1,0,1) end if UserInputService:IsKeyDown(Enum.KeyCode.S) then mv=mv-Camera.CFrame.LookVector*Vector3.new(1,0,1) end if UserInputService:IsKeyDown(Enum.KeyCode.A) then mv=mv-Camera.CFrame.RightVector end if UserInputService:IsKeyDown(Enum.KeyCode.D) then mv=mv+Camera.CFrame.RightVector end if UserInputService:IsKeyDown(Enum.KeyCode.Space) then mv=mv+Vector3.new(0,1,0) end if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then mv=mv-Vector3.new(0,1,0) end root.Velocity=mv*Settings.flySpeed end) end)\n else safeCall(function() local hum=getHum() if hum then hum.PlatformStand=false end local root=getRoot() if root then root.Velocity=Vector3.new(0,0,0) end end) end\nend\nlocal function toggleNoClip(state)\n if Connections.noClip then Connections.noClip:Disconnect() Connections.noClip=nil end\n if state then Connections.noClip=RunService.Stepped:Connect(function() safeCall(function() local char=LocalPlayer.Character if char then for _,part in ipairs(char:GetDescendants()) do if part:IsA("BasePart") then part.CanCollide=false end end end end) end)\n else safeCall(function() local char=LocalPlayer.Character if char then for _,part in ipairs(char:GetDescendants()) do if part:IsA("BasePart") then part.CanCollide=true end end end end) end\nend\nlocal function setJumpPower() safeCall(function() local hum=getHum() if hum then hum.UseJumpPower=true hum.JumpPower=Settings.jumpPower end end) end\nlocal function setWalkSpeed() safeCall(function() local hum=getHum() if hum then hum.WalkSpeed=Settings.swimSpeed end end) end\nlocal function toggleAntiAFK(state)\n if Connections.antiAFK then Connections.antiAFK:Disconnect() Connections.antiAFK=nil end\n if state then Connections.antiAFK=LocalPlayer.Idled:Connect(function() safeCall(function() VirtualUser:Button2Down(Vector2.new(0,0),Camera.CFrame) task.wait(1) VirtualUser:Button2Up(Vector2.new(0,0),Camera.CFrame) end) end) end\nend\nlocal function toggleAutoJump(state)\n if Connections.autoJump then Connections.autoJump:Disconnect() Connections.autoJump=nil end\n if state then Connections.autoJump=UserInputService.JumpRequest:Connect(function() safeCall(function() local hum=getHum() if hum and hum.Health>0 then hum:ChangeState(Enum.HumanoidStateType.Jumping) end end) end) end\nend\nlocal function teleportAllPlayers() safeCall(function() local myRoot=getRoot() if not myRoot then return end for _,pl in ipairs(Players:GetPlayers()) do if pl~=LocalPlayer and isAlive(pl) then local root=getRoot(pl) if root then root.CFrame=myRoot.CFrame+Vector3.new(math.random(-8,8),0,math.random(-8,8)) end end end end) end\nlocal function explodeAllPlayers() safeCall(function() for _,pl in ipairs(Players:GetPlayers()) do if pl~=LocalPlayer and isAlive(pl) then local char=pl.Character local root=getRoot(pl) if char and root then local hum=char:FindFirstChildOfClass("Humanoid") if hum then hum.Health=0 end local ex=Instance.new("Explosion") ex.Position=root.Position ex.BlastRadius=8 ex.BlastPressure=100 ex.DestroyJointRadiusPercent=0 ex.Parent=workspace end end end end) end\nlocal function toggleFreezeAll(state)\n if Connections.freezeAll then Connections.freezeAll:Disconnect() Connections.freezeAll=nil end\n if state then Connections.freezeAll=RunService.RenderStepped:Connect(function() safeCall(function() for _,pl in ipairs(Players:GetPlayers()) do if pl~=LocalPlayer and isAlive(pl) then local hum=getHum(pl) if hum then hum.WalkSpeed=0 hum.JumpPower=0 hum.UseJumpPower=true end end end end) end)\n else safeCall(function() for _,pl in ipairs(Players:GetPlayers()) do if pl~=LocalPlayer and isAlive(pl) then local hum=getHum(pl) if hum then hum.WalkSpeed=16 hum.JumpPower=50 end end end end) end\nend\nlocal function toggleChatSpam(state)\n if Connections.chatSpam then Connections.chatSpam:Disconnect() Connections.chatSpam=nil end\n if state then Connections.chatSpam=task.spawn(function() while Settings.chatSpam do safeCall(function() if TextChatService and TextChatService.ChatVersion==Enum.ChatVersion.TextChatService then local channels=TextChatService:FindFirstChild("TextChannels") local general=channels and channels:FindFirstChild("RBXGeneral") if general then general:SendAsync(CHAT_SPAM_MESSAGE) end else local chat=ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents") if chat then local say=chat:FindFirstChild("SayMessageRequest") if say then say:FireServer(CHAT_SPAM_MESSAGE,"All") end end end end) task.wait(1) end end) end\nend\n\nlocal function setupUI()\n local sg=Instance.new("ScreenGui") sg.Name="RH4X_V2_SAMUELDOSSCRIPT" sg.ResetOnSpawn=false sg.Parent=CoreGui MainGui=sg\n floatBtn=Instance.new("TextButton") floatBtn.Size=UDim2.new(0,55,0,55) floatBtn.Position=UDim2.new(0.85,-27,0.85,-27) floatBtn.BackgroundColor3=Color3.fromRGB(0,0,0) floatBtn.BackgroundTransparency=0.3 floatBtn.Text="☠️" floatBtn.TextColor3=Color3.fromRGB(255,0,0) floatBtn.TextSize=32 floatBtn.Font=Enum.Font.GothamBold floatBtn.Parent=sg\n local fc=Instance.new("UICorner") fc.CornerRadius=UDim.new(1,0) fc.Parent=floatBtn\n menuFrame=Instance.new("Frame") menuFrame.Size=UDim2.new(0.9,0,0.85,0) menuFrame.Position=UDim2.new(0.05,0,0.075,0) menuFrame.BackgroundColor3=PANEL_BG_COLOR menuFrame.BackgroundTransparency=0.08 menuFrame.BorderSizePixel=0 menuFrame.Visible=false menuFrame.Parent=sg\n local mc=Instance.new("UICorner") mc.CornerRadius=UDim.new(0,20) mc.Parent=menuFrame\n local tb=Instance.new("Frame") tb.Size=UDim2.new(1,0,0,70) tb.BackgroundColor3=Color3.fromRGB(0,140,150) tb.BackgroundTransparency=0.2 tb.Parent=menuFrame\n local logo=Instance.new("ImageLabel") logo.Size=UDim2.new(0,60,0,60) logo.Position=UDim2.new(0.01,0,0.05,0) logo.BackgroundTransparency=1 logo.Image=LOGO_URL logo.Parent=tb\n local tlab=Instance.new("TextLabel") tlab.Size=UDim2.new(1,-100,1,0) tlab.Position=UDim2.new(0.08,0,0,0) tlab.BackgroundTransparency=1 tlab.Text="RH4X V2+|SAMUELDOSSCRIPT__" tlab.TextColor3=Color3.fromRGB(0,255,255) tlab.Font=Enum.Font.GothamBold tlab.TextSize=20 tlab.TextXAlignment=Enum.TextXAlignment.Left tlab.Parent=tb\n local cb=Instance.new("TextButton") cb.Size=UDim2.new(0,45,1,0) cb.Position=UDim2.new(1,-45,0,0) cb.BackgroundColor3=Color3.fromRGB(200,40,50) cb.Text="✕" cb.TextColor3=Color3.fromRGB(255,255,255) cb.Font=Enum.Font.GothamBold cb.TextSize=22 cb.Parent=tb cb.MouseButton1Click:Connect(function() MenuVisible=false menuFrame.Visible=false end)\n local scroll=Instance.new("ScrollingFrame") scroll.Size=UDim2.new(1,0,1,-70) scroll.Position=UDim2.new(0,0,0,70) scroll.BackgroundTransparency=1 scroll.CanvasSize=UDim2.new(0,0,0,0) scroll.ScrollBarThickness=6 scroll.ScrollBarImageColor3=Color3.fromRGB(0,200,200) scroll.Parent=menuFrame\n local uiList=Instance.new("UIListLayout") uiList.Padding=UDim.new(0,8) uiList.SortOrder=Enum.SortOrder.LayoutOrder uiList.Parent=scroll\n local function createToggle(text,key)\n  local btn=Instance.new("TextButton") btn.Size=UDim2.new(1,-20,0,36) btn.BackgroundColor3=Color3.fromRGB(35,40,60) btn.Text=text..(Settings[key] and "  ✅" or "  ❌") btn.TextColor3=Color3.fromRGB(240,240,240) btn.Font=Enum.Font.GothamSemibold btn.TextSize=14 btn.Parent=scroll\n  btn.MouseButton1Click:Connect(function() Settings[key]=not Settings[key] btn.Text=text..(Settings[key] and "  ✅" or "  ❌") if key=="flyEnabled" then toggleFly(Settings.flyEnabled) end if key=="noClipEnabled" then toggleNoClip(Settings.noClipEnabled) end if key=="antiAFK" then toggleAntiAFK(Settings.antiAFK) end if key=="autoJump" then toggleAutoJump(Settings.autoJump) end if key=="freezeAll" then toggleFreezeAll(Settings.freezeAll) end if key=="chatSpam" then toggleChatSpam(Settings.chatSpam) end if key=="teleportAll" and Settings.teleportAll then teleportAllPlayers() end if key=="explodeAll" and Settings.explodeAll then explodeAllPlayers() end if key=="aimbotEnabled" then updateFOVCircle() end end)\n end\n local function createSlider(text,key,minV,maxV)\n  local f=Instance.new("Frame") f.Size=UDim2.new(1,-20,0,52) f.BackgroundTransparency=1 f.Parent=scroll\n  local l=Instance.new("TextLabel") l.Size=UDim2.new(1,0,0,20) l.BackgroundTransparency=1 l.Text=text..": "..Settings[key] l.TextColor3=Color3.fromRGB(210,230,255) l.Font=Enum.Font.Gotham l.TextSize=13 l.Parent=f\n  local b=Instance.new("TextBox") b.Size=UDim2.new(0.3,0,0,26) b.Position=UDim2.new(0.35,0,0,22) b.BackgroundColor3=Color3.fromRGB(40,48,70) b.Text=tostring(Settings[key]) b.TextColor3=Color3.fromRGB(255,255,255) b.Font=Enum.Font.Gotham b.TextSize=14 b.Parent=f\n  b.FocusLost:Connect(function() local n=tonumber(b.Text) if n then Settings[key]=math.clamp(n,minV,maxV) if key=="flySpeed" and Settings.flyEnabled then toggleFly(true) end if key=="jumpPower" then setJumpPower() end if key=="swimSpeed" then setWalkSpeed() end if key=="aimbotFOV" then updateFOVCircle() end end b.Text=tostring(Settings[key]) l.Text=text..": "..Settings[key] end)\n end\n local function createDropdown(text,key,options)\n  local f=Instance.new("Frame") f.Size=UDim2.new(1,-20,0,42) f.BackgroundTransparency=1 f.Parent=scroll\n  local l=Instance.new("TextLabel") l.Size=UDim2.new(0.4,0,1,0) l.BackgroundTransparency=1 l.Text=text..":" l.TextColor3=Color3.fromRGB(210,230,255) l.Font=Enum.Font.Gotham l.TextSize=13 l.TextXAlignment=Enum.TextXAlignment.Left l.Parent=f\n  local d=Instance.new("TextButton") d.Size=UDim2.new(0.5,0,0.7,0) d.Position=UDim2.new(0.45,0,0.15,0) d.BackgroundColor3=Color3.fromRGB(40,48,70) d.Text=Settings[key] d.TextColor3=Color3.fromRGB(255,255,255) d.Font=Enum.Font.Gotham d.TextSize=13 d.Parent=f\n  local idx=1 for i,opt in ipairs(options) do if opt==Settings[key] then idx=i break end end\n  d.MouseButton1Click:Connect(function() idx=idx%#options+1 Settings[key]=options[idx] d.Text=Settings[key] end)\n end\n createToggle("📦 ESP Ativado","espEnabled")\n createToggle("📦 ESP Box","espBox")\n createToggle("📏 ESP Line","espLine")\n createToggle("❤️ ESP Health","espHealth")\n createToggle("📛 ESP Name","espName")\n createToggle("📐 ESP Distance","espDistance")\n createToggle("🎯 ESP Tracer","espTracer")\n createToggle("🦴 ESP Skeleton","espSkeleton")\n createToggle("🌈 ESP Chams","espChams")\n createToggle("✨ ESP Glow","espGlow")\n createToggle("🌈 Arco-Íris","espRainbow")\n createToggle("🎯 Aimbot","aimbotEnabled")\n createToggle("🔮 Aimbot Preditivo","aimbotPredict")\n createSlider("🎚️ Suavidade","aimbotSmooth",1,20)\n createSlider("🔭 FOV","aimbotFOV",0,180)\n createDropdown("🎯 Hitbox","aimbotHitbox",{"Head","Chest","Legs"})\n createToggle("✈️ Fly","flyEnabled")\n createSlider("🚀 Velocidade Fly","flySpeed",10,200)\n createToggle("🚪 NoClip","noClipEnabled")\n createSlider("🦘 Jump Power","jumpPower",20,200)\n createSlider("🏊 Walk Speed","swimSpeed",16,200)\n createToggle("🛑 Anti-AFK","antiAFK")\n createToggle("🔁 Auto Jump","autoJump")\n createToggle("📡 Teleport All","teleportAll")\n createToggle("💥 Explode All","explodeAll")\n createToggle("❄️ Freeze All","freezeAll")\n createToggle("💬 Chat Spam","chatSpam")\n local cbb=Instance.new("TextButton") cbb.Size=UDim2.new(1,-20,0,38) cbb.BackgroundColor3=Color3.fromRGB(150,30,45) cbb.Text="FECHAR MENU" cbb.TextColor3=Color3.fromRGB(255,255,255) cbb.Font=Enum.Font.GothamBold cbb.Parent=scroll cbb.MouseButton1Click:Connect(function() MenuVisible=false menuFrame.Visible=false end)\n local function updateCanvas() task.wait(0.1) scroll.CanvasSize=UDim2.new(0,0,0,uiList.AbsoluteContentSize.Y+20) end\n uiList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateCanvas) updateCanvas()\n floatBtn.MouseButton1Click:Connect(function() MenuVisible=not MenuVisible menuFrame.Visible=MenuVisible end)\nend\n\nsetupUI()\ncreateFOVCircle()\nfor _,pl in ipairs(Players:GetPlayers()) do if pl~=LocalPlayer then ESPObjects[pl]=createESPObjects() end end\nPlayers.PlayerAdded:Connect(function(pl) if pl~=LocalPlayer then ESPObjects[pl]=createESPObjects() end end)\nPlayers.PlayerRemoving:Connect(function(pl) if ESPObjects[pl] then safeCall(function() local o=ESPObjects[pl] if o.box then o.box:Remove() end if o.line then o.line:Remove() end if o.name then o.name:Remove() end if o.dist then o.dist:Remove() end if o.healthT then o.healthT:Remove() end if o.tracer then o.tracer:Remove() end if o.healthBg then o.healthBg:Remove() end if o.healthFg then o.healthFg:Remove() end for _,l in ipairs(o.skeleton) do l:Remove() end if o.highlight then o.highlight:Destroy() end if o.glow then o.glow:Destroy() end end) ESPObjects[pl]=nil end end)\nRunService.RenderStepped:Connect(function() if not Logged then return end safeCall(updateESP) updateFOVCircle() if Settings.aimbotEnabled then local target=getBestAimTarget() if target then local currentCF=Camera.CFrame local targetCF=CFrame.new(currentCF.Position,target) if Settings.aimbotSmooth>1 then Camera.CFrame=currentCF:Lerp(targetCF,1/Settings.aimbotSmooth) else Camera.CFrame=targetCF end end end if Settings.espRainbow then currentHue=(currentHue+0.005)%1 end end)\nprint("✅ RH4X V2+|SAMUELDOSSCRIPT__ carregado!")\n';
+}
+function copyKey(){if(currentKey){navigator.clipboard.writeText(currentKey);showToast('📋 Copiada!','success')}else showToast('⚠️ Nenhuma key','error')}
+function copyScript(){if(currentScript){navigator.clipboard.writeText(currentScript);showToast('📋 Copiado!','success')}else showToast('⚠️ Gere primeiro','error')}
+function copyScriptOutput(){const s=document.getElementById('scriptOutput').textContent;if(s&&!s.startsWith('Selecione')){navigator.clipboard.writeText(s);showToast('📋 Copiado!','success')}else showToast('⚠️ Gere primeiro','error')}
+function updateUI(){const total=Object.keys(keys).length;const active=Object.values(keys).filter(k=>!k.used&&new Date(k.expires)>new Date()).length;const used=Object.values(keys).filter(k=>k.used).length;const expired=Object.values(keys).filter(k=>!k.used&&new Date(k.expires)<=new Date()).length;document.getElementById('totalKeys').textContent=total;document.getElementById('activeKeys').textContent=active;document.getElementById('usedKeys').textContent=used;document.getElementById('expiredKeys').textContent=expired;renderKeyList();updateScriptSelect();}
+function renderKeyList(){const list=document.getElementById('keyList');const arr=Object.keys(keys);if(arr.length===0){list.innerHTML='<p style="color:#8b949e">Nenhuma key ainda.</p>';return;}let html='';arr.sort((a,b)=>new Date(keys[b].created)-new Date(keys[a].created));arr.forEach(key=>{const d=keys[key];const isExpired=new Date(d.expires)<=new Date();const status=d.used?'USADA':(isExpired?'EXPIRADA':'ATIVA');const statusColor=d.used?'#ff4444':(isExpired?'#ffaa00':'#00cc66');const dotClass=d.used?'dot-used':(isExpired?'dot-expired':'dot-active');const h=d.hours;const timeText=h>=24?(h/24+' dias'):(h+' horas');html+=`<div class="key-item"><div><div class="code">${key}</div><div class="info">${d.plan} · ${timeText} · Expira: ${new Date(d.expires).toLocaleString()}</div></div><div><span class="status-dot ${dotClass}"></span><span style="color:${statusColor};font-weight:600;font-size:.8rem">${status}</span><div class="key-actions"><button class="btn-copy" onclick="copySpecificKey('${key}')">📋</button><button class="btn-script" onclick="generateScriptWithKey('${key}')">📜</button>${!d.used&&!isExpired?`<button class="btn-use" onclick="useKey('${key}')">✅</button>`:''}<button class="btn-delete" onclick="deleteKey('${key}')">🗑️</button></div></div></div>`;});list.innerHTML=html;}
+function updateScriptSelect(){const select=document.getElementById('scriptKeySelect');select.innerHTML='<option value="">Selecione uma key...</option>';Object.keys(keys).forEach(key=>{if(!keys[key].used){const opt=document.createElement('option');opt.value=key;const h=keys[key].hours;const t=h>=24?(h/24+'d'):(h+'h');opt.textContent=key+' ('+keys[key].plan+' - '+t+')';select.appendChild(opt);}});}
+function copySpecificKey(key){navigator.clipboard.writeText(key);showToast('📋 Copiada!','success')}
+async function useKey(key){if(!confirm('Marcar como usada?'))return;try{await api('/api/keys/'+encodeURIComponent(key)+'/use',{method:'POST'});await loadKeys();showToast('✅ Marcada','info')}catch(e){showToast('❌ '+e.message,'error')}}
+async function deleteKey(key){if(!confirm('Deletar?'))return;try{await api('/api/keys/'+encodeURIComponent(key),{method:'DELETE'});await loadKeys();showToast('🗑️ Deletada','error')}catch(e){showToast('❌ '+e.message,'error')}}
+async function clearAllKeys(){if(!confirm('Deletar TODAS?'))return;try{await api('/api/keys',{method:'DELETE'});await loadKeys();showToast('🗑️ Todas','error')}catch(e){showToast('❌ '+e.message,'error')}}
+function exportKeys(){const blob=new Blob([JSON.stringify(keys,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='rh4x_keys.json';a.click();showToast('📤 Exportado','success')}
+function openTab(tab,btn){document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));document.getElementById('tab-'+tab).classList.add('active');if(btn)btn.classList.add('active');}
+function showToast(msg,type='info'){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+type;t.style.display='block';clearTimeout(t._timeout);t._timeout=setTimeout(()=>{t.style.display='none'},3000);}
+document.addEventListener('DOMContentLoaded',function(){document.getElementById('espColor').addEventListener('input',function(){document.getElementById('espColorHex').value=this.value});document.getElementById('espColorHex').addEventListener('input',function(){const v=this.value;if(/^#[0-9a-fA-F]{6}$/.test(v))document.getElementById('espColor').value=v});document.getElementById('panelColor').addEventListener('input',function(){document.getElementById('panelColorHex').value=this.value});document.getElementById('panelColorHex').addEventListener('input',function(){const v=this.value;if(/^#[0-9a-fA-F]{6}$/.test(v))document.getElementById('panelColor').value=v});loadKeys();});
+window.generateKey=generateKey;window.copyKey=copyKey;window.copyScript=copyScript;window.copyScriptOutput=copyScriptOutput;window.generateScript=generateScript;window.generateScriptFromSelect=generateScriptFromSelect;window.generateScriptWithKey=generateScriptWithKey;window.copySpecificKey=copySpecificKey;window.useKey=useKey;window.deleteKey=deleteKey;window.clearAllKeys=clearAllKeys;window.exportKeys=exportKeys;window.openTab=openTab;window.loadKeys=loadKeys;
+</script>
+</body>
+</html>
+  
